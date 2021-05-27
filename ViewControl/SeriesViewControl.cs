@@ -11,25 +11,73 @@ namespace DIO.Series.ViewControl
 
         public static void VisualizarSerie()
         {
-            _repository.Read(1234);
+            Console.Write("Ingrese o Id da série: ");
+            int id = int.Parse(Console.ReadLine());
+            Console.WriteLine(_repository.Read(id));
         }
 
         public static void ExcluirSerie()
         {
-            Serie serie = _repository.Read(1234);
-            _repository.Delete(serie);
+            Console.Write("Ingrese o Id da série: ");
+            int id = int.Parse(Console.ReadLine());
+
+            Serie serie = _repository.Read(id);
+
+            if (serie == null)
+            {
+                Console.WriteLine("O Id inserido não está cadastrado!");
+            }
+            else
+            {
+                _repository.Delete(serie);
+                Console.WriteLine($"Série excluída: {serie}");
+            }
         }
 
         public static void AtualizarSerie()
         {
-            Serie serie = _repository.Read(1234);
-            serie.Ano = 2007;
-            _repository.Update(serie);
+            Console.Write("Id: ");
+            int id = int.Parse(Console.ReadLine());
+
+            Serie serie = _repository.Read(id);
+
+            if (serie == null)
+            {
+                Console.WriteLine("O Id inserido não está cadastrado!");
+            }
+            else
+            {
+                Console.Write("Título: ");
+                serie.Titulo = Console.ReadLine();
+
+                Console.Write("Descrição: ");
+                serie.Descricao = Console.ReadLine();
+
+                Console.Write("Gênero: ");
+                serie.Genero = (Genero)int.Parse(Console.ReadLine());
+
+                Console.Write("Ano: ");
+                serie.Ano = int.Parse(Console.ReadLine());
+
+                _repository.Update(serie);
+            }
         }
 
         public static void InserirSerie()
         {
-            Serie serie = new Serie(1234, Genero.Acao, "Título", "Descricao", 1980);
+            Console.Write("Id: ");
+            int id = int.Parse(Console.ReadLine());
+            Console.Write("Título: ");
+            string titulo = Console.ReadLine();
+            Console.Write("Descrição: ");
+            string descricao = Console.ReadLine();
+            Console.Write("Gênero: ");
+            Genero genero = (Genero)int.Parse(Console.ReadLine());
+            Console.Write("Ano: ");
+            int ano = int.Parse(Console.ReadLine());
+
+            Serie serie = new Serie(id, genero, titulo, descricao, ano);
+
             _repository.Create(serie);
         }
 

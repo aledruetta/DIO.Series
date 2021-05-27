@@ -20,23 +20,39 @@ namespace DIO.Series.Repository
 
         public void Create(Serie item)
         {
-            _series.Add(item);
+            try
+            {
+                _series.Add(item);
+            }
+            catch (System.NullReferenceException)
+            {
+                throw;
+            }
         }
 
         public Serie Read(int id)
         {
             Serie serie = _series.Find(item => item.Id == id);
+
             if (serie != null && !serie.Excluido)
                 return serie;
+
             return null;
         }
 
         public void Update(Serie serie)
         {
-            if (serie != null && !serie.Excluido)
+            try
             {
-                int index = _series.FindIndex(item => item.Id == serie.Id);
-                _series[index] = serie;
+                if (!serie.Excluido)
+                {
+                    int index = _series.FindIndex(item => item.Id == serie.Id);
+                    _series[index] = serie;
+                }
+            }
+            catch (System.NullReferenceException)
+            {
+                throw;
             }
         }
 
