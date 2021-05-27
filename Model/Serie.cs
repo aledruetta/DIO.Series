@@ -1,26 +1,27 @@
-namespace DIO.Series.Entities
+namespace DIO.Series.Model
 {
     public class Serie : EntidadeBase
     {
-        public Genero Genero { get; protected set; }
-        public string Titulo { get; protected set; }
-        public string Descricao { get; protected set; }
-        public int Ano { get; protected set; }
-        private bool _excluido { get; set; }
+        public Genero Genero { get; set; }
+        public string Titulo { get; set; }
+        public string Descricao { get; set; }
+        public int Ano { get; set; }
+
+        public bool Excluido { get; private set; }
 
         public Serie(int id, Genero genero, string titulo, string descricao, int ano)
         {
-            base.Id = Id;
+            base.Id = id;
             Genero = genero;
             Titulo = titulo;
             Descricao = descricao;
             Ano = ano;
-            _excluido = false;
+            Excluido = false;
         }
 
         public void Excluir()
         {
-            _excluido = true;
+            Excluido = true;
         }
 
         public override string ToString()
