@@ -15,19 +15,19 @@ namespace DIO.Series
                 switch (opcaoUsuario)
                 {
                     case "1":
-                        SeriesViewControl.ListarSeries();
-                        break;
-                    case "2":
                         SeriesViewControl.InserirSerie();
                         break;
+                    case "2":
+                        SeriesViewControl.VisualizarSerie();
+                        break;
                     case "3":
-                        SeriesViewControl.AtualizarSerie();
+                        SeriesViewControl.ListarSeries();
                         break;
                     case "4":
-                        SeriesViewControl.ExcluirSerie();
+                        SeriesViewControl.AtualizarSerie();
                         break;
                     case "5":
-                        SeriesViewControl.VisualizarSerie();
+                        SeriesViewControl.ExcluirSerie();
                         break;
                     case "L":
                         Console.Clear();
@@ -46,11 +46,11 @@ namespace DIO.Series
             Console.WriteLine();
             Console.WriteLine("Menu Séries");
             Console.WriteLine("Informe a opção desejada:");
-            Console.WriteLine("1 - Listar séries");
-            Console.WriteLine("2 - Inserir nova série");
-            Console.WriteLine("3 - Atualizar série");
-            Console.WriteLine("4 - Excluir série");
-            Console.WriteLine("5 - Visualizar série");
+            Console.WriteLine("1 - Inserir nova série");
+            Console.WriteLine("2 - Visualizar série");
+            Console.WriteLine("3 - Listar séries");
+            Console.WriteLine("4 - Atualizar série");
+            Console.WriteLine("5 - Excluir série");
             Console.WriteLine("L - Limpar tela");
             Console.WriteLine("X - Sair");
             Console.WriteLine();

@@ -83,7 +83,7 @@ namespace DIO.Series.ViewControl
 
         public static void ListarSeries()
         {
-            List<Serie> lista = _repository.GetItemList();
+            List<Serie> lista = _repository.GetAll();
             foreach (var item in lista)
                 Console.WriteLine(item);
         }

@@ -7,15 +7,10 @@ namespace DIO.Series.Repository
     {
         private List<Serie> _series = new List<Serie>();
 
-        public List<Serie> GetItemList()
+        public List<Serie> GetAll()
         {
-            List<Serie> serie = new List<Serie>();
-
-            foreach (var item in _series)
-                if (!item.Excluido)
-                    serie.Add(item);
-
-            return serie;
+            // Lista todas as séries que não tem sido excluídas
+            return _series.FindAll(item => !item.Excluido);
         }
 
         public void Create(Serie item)

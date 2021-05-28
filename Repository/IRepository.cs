@@ -4,7 +4,7 @@ namespace DIO.Series.Repository
 {
     public interface IRepository<T>
     {
-        List<T> GetItemList();
+        List<T> GetAll();
         void Create(T item);
         T Read(int id);
         void Update(T item);
