@@ -12,14 +12,14 @@ namespace DIO.Series.ViewControl
         public static void VisualizarSerie()
         {
             Console.Write("Ingrese o Id da série: ");
-            int id = int.Parse(Console.ReadLine());
+            var id = int.Parse(Console.ReadLine());
             Console.WriteLine(_repository.Read(id));
         }
 
         public static void ExcluirSerie()
         {
             Console.Write("Ingrese o Id da série: ");
-            int id = int.Parse(Console.ReadLine());
+            var id = int.Parse(Console.ReadLine());
 
             Serie serie = _repository.Read(id);
 
@@ -37,7 +37,7 @@ namespace DIO.Series.ViewControl
         public static void AtualizarSerie()
         {
             Console.Write("Id: ");
-            int id = int.Parse(Console.ReadLine());
+            var id = int.Parse(Console.ReadLine());
 
             Serie serie = _repository.Read(id);
 
@@ -66,19 +66,34 @@ namespace DIO.Series.ViewControl
         public static void InserirSerie()
         {
             Console.Write("Id: ");
-            int id = int.Parse(Console.ReadLine());
-            Console.Write("Título: ");
-            string titulo = Console.ReadLine();
-            Console.Write("Descrição: ");
-            string descricao = Console.ReadLine();
-            Console.Write("Gênero: ");
-            Genero genero = (Genero)int.Parse(Console.ReadLine());
-            Console.Write("Ano: ");
-            int ano = int.Parse(Console.ReadLine());
+            var id = int.Parse(Console.ReadLine());
 
-            Serie serie = new Serie(id, genero, titulo, descricao, ano);
+            Console.Write("Título: ");
+            var titulo = Console.ReadLine();
+
+            Console.Write("Descrição: ");
+            var descricao = Console.ReadLine();
+
+            mostrarGeneros();
+            Console.Write("Gênero: ");
+            var genero = (Genero)int.Parse(Console.ReadLine()) - 1;
+
+            Console.Write("Ano: ");
+            var ano = int.Parse(Console.ReadLine());
+
+            var serie = new Serie(id, genero, titulo, descricao, ano);
 
             _repository.Create(serie);
+        }
+
+        private static void mostrarGeneros()
+        {
+            int i = 0;
+            foreach (var value in Enum.GetValues<Genero>())
+            {
+                Console.Write($"{++i} - ");
+                Console.WriteLine(value);
+            }
         }
 
         public static void ListarSeries()
