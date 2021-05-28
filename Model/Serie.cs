@@ -26,7 +26,7 @@ namespace DIO.Series.Model
 
         public override string ToString()
         {
-            return $"[{Id}] {Genero}, {Titulo}, {Descricao}, {Ano}";
+            return $"[{Id}] {Titulo}, {Descricao}, {Genero}, {Ano}, excluído: {Excluido}";
         }
     }
 }
