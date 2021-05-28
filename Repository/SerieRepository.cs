@@ -5,7 +5,7 @@ namespace DIO.Series.Repository
 {
     public class SerieRepository : IRepository<Serie>
     {
-        private List<Serie> _series = new List<Serie>();
+        private static readonly List<Serie> _series = new List<Serie>();
 
         public List<Serie> GetAll()
         {
